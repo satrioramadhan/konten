@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI, ML & Deep Learning - Presentation</title>
+    <title>AI, ML & Deep Learning - Instagram Story Format</title>
     <style>
         * {
             margin: 0;
@@ -13,86 +13,93 @@
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            background: #0a0a0a;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 15px;
+            padding: 0;
         }
         
         .presentation-container {
-            width: 100%;
-            max-width: 500px;
-        }
-        
-        .slide-wrapper {
-            background: white;
-            width: 100%;
-            min-height: 90vh;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-            overflow: hidden;
+            width: 1080px;
+            height: 1920px;
             position: relative;
+            background: #000;
+            box-shadow: 0 0 50px rgba(0,0,0,0.8);
         }
         
         .slide {
-            width: 100%;
-            height: 100%;
+            width: 1080px;
+            height: 1920px;
             display: none;
-            padding: 40px 30px;
+            padding: 80px 60px;
             flex-direction: column;
             justify-content: space-between;
             position: relative;
+            overflow: hidden;
         }
         
         .slide.active {
             display: flex;
         }
         
-        /* Navigation */
+        /* Navigation - Fixed at bottom */
+        .nav-overlay {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(20px);
+            padding: 20px;
+            z-index: 1000;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
         .nav-container {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
         }
         
         .nav-btn {
-            background: rgba(255,255,255,0.2);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            border: 2px solid rgba(255,255,255,0.3);
-            padding: 12px 30px;
+            border: none;
+            padding: 15px 40px;
             border-radius: 50px;
             cursor: pointer;
             font-weight: bold;
-            font-size: 1em;
+            font-size: 18px;
             transition: all 0.3s;
-            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
         }
         
         .nav-btn:hover {
-            background: rgba(255,255,255,0.3);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
         }
         
         .nav-btn:disabled {
             opacity: 0.3;
             cursor: not-allowed;
+            transform: none;
         }
         
         .slide-indicator {
             display: flex;
             justify-content: center;
-            gap: 8px;
+            gap: 12px;
             margin-top: 15px;
-            flex-wrap: wrap;
         }
         
         .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
+            width: 40px;
+            height: 6px;
+            border-radius: 3px;
             background: rgba(255,255,255,0.3);
             cursor: pointer;
             transition: all 0.3s;
@@ -100,8 +107,21 @@
         
         .dot.active {
             background: white;
-            width: 25px;
-            border-radius: 5px;
+            width: 60px;
+        }
+        
+        /* Slide Number Badge */
+        .slide-number {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
         }
         
         /* SLIDE 1 - Cover */
@@ -113,42 +133,44 @@
             color: white;
         }
         
-        .big-emoji {
-            font-size: 5em;
-            margin-bottom: 20px;
-            animation: bounce 2s ease-in-out infinite;
+        .hero-emoji {
+            font-size: 180px;
+            margin-bottom: 40px;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));
         }
         
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
         
         .slide-1 h1 {
-            font-size: 2.5em;
-            margin-bottom: 15px;
+            font-size: 80px;
+            margin-bottom: 30px;
             line-height: 1.2;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            text-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            font-weight: 900;
         }
         
         .slide-1 .tagline {
-            font-size: 1.4em;
-            opacity: 0.95;
-            font-weight: 500;
-            margin-bottom: 25px;
+            font-size: 48px;
+            margin-bottom: 50px;
+            font-weight: 600;
         }
         
         .slide-1 .teaser {
             background: rgba(255,255,255,0.15);
-            padding: 20px;
-            border-radius: 15px;
+            padding: 40px;
+            border-radius: 30px;
             backdrop-filter: blur(10px);
-            border: 2px solid rgba(255,255,255,0.3);
-            font-size: 1.1em;
+            border: 3px solid rgba(255,255,255,0.3);
+            font-size: 32px;
             line-height: 1.6;
+            max-width: 900px;
         }
         
-        /* SLIDE 2, 3, 4 - Definisi AI, ML, DL */
+        /* SLIDE 2, 3, 4 - Definisi */
         .slide-2, .slide-3, .slide-4 {
             color: white;
         }
@@ -167,49 +189,52 @@
         
         .slide-header {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 60px;
         }
         
         .slide-header .emoji {
-            font-size: 3.5em;
+            font-size: 120px;
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
         }
         
         .slide-header h2 {
-            font-size: 2.2em;
-            margin-bottom: 5px;
+            font-size: 68px;
+            margin-bottom: 15px;
+            font-weight: 900;
         }
         
         .slide-header .subtitle {
-            font-size: 1.2em;
-            opacity: 0.9;
+            font-size: 38px;
+            opacity: 0.95;
             font-style: italic;
+            font-weight: 500;
         }
         
         .content-section {
             flex: 1;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            gap: 15px;
+            gap: 30px;
         }
         
         .content-box {
             background: rgba(255,255,255,0.15);
-            padding: 18px;
-            border-radius: 12px;
+            padding: 40px;
+            border-radius: 25px;
             backdrop-filter: blur(10px);
-            border: 2px solid rgba(255,255,255,0.3);
+            border: 3px solid rgba(255,255,255,0.3);
         }
         
         .content-box h3 {
-            font-size: 1.3em;
-            margin-bottom: 10px;
+            font-size: 42px;
+            margin-bottom: 20px;
+            font-weight: 700;
         }
         
         .content-box p {
-            font-size: 1em;
+            font-size: 32px;
             line-height: 1.6;
         }
         
@@ -219,38 +244,44 @@
         }
         
         .content-box li {
-            font-size: 0.95em;
-            padding: 5px 0;
+            font-size: 30px;
+            padding: 15px 0;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 20px;
+            line-height: 1.4;
         }
         
         .content-box li:before {
             content: "✓";
             font-weight: bold;
             background: rgba(255,255,255,0.3);
-            width: 20px;
-            height: 20px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            font-size: 0.9em;
+            font-size: 28px;
         }
         
         .example-box {
             background: rgba(255,255,255,0.25);
-            padding: 12px;
-            border-radius: 8px;
-            margin-top: 8px;
-            font-size: 0.95em;
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 20px;
+            font-size: 30px;
+            line-height: 1.5;
+        }
+        
+        .example-box strong {
+            font-size: 34px;
         }
         
         /* SLIDE 5 - Hubungan */
         .slide-5 {
-            background: white;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         }
         
         .slide-5 .slide-header {
@@ -262,66 +293,68 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            gap: 40px;
         }
         
-        .relationship-container {
+        .relationship-visual {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
+            gap: 25px;
         }
         
         .level-box {
             width: 100%;
-            padding: 15px;
-            border-radius: 12px;
+            padding: 40px;
+            border-radius: 25px;
             text-align: center;
             color: white;
             font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transition: transform 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            font-size: 38px;
         }
         
         .level-box:hover {
-            transform: translateX(10px);
+            transform: translateX(15px) scale(1.02);
         }
         
         .level-1 {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            font-size: 1.5em;
-            padding: 18px;
+            font-size: 48px;
         }
         
         .level-2 {
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            font-size: 1.3em;
-            width: 85%;
+            font-size: 44px;
+            width: 90%;
         }
         
         .level-3 {
             background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            font-size: 1.1em;
-            width: 70%;
+            font-size: 40px;
+            width: 75%;
         }
         
-        .explanation-text {
-            padding: 18px;
-            background: #f8f9fa;
-            border-radius: 12px;
-            border-left: 5px solid #667eea;
+        .explanation-card {
+            background: white;
+            padding: 45px;
+            border-radius: 25px;
+            border-left: 10px solid #667eea;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         
-        .explanation-text h3 {
+        .explanation-card h3 {
             color: #2c3e50;
-            font-size: 1.2em;
-            margin-bottom: 8px;
+            font-size: 42px;
+            margin-bottom: 20px;
+            font-weight: 700;
         }
         
-        .explanation-text p {
+        .explanation-card p {
             color: #34495e;
-            font-size: 1em;
-            line-height: 1.6;
+            font-size: 32px;
+            line-height: 1.7;
         }
         
         /* SLIDE 6 - Contoh */
@@ -334,45 +367,52 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            gap: 25px;
         }
         
-        .examples-list {
+        .category-section {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 15px;
+        }
+        
+        .category-badge {
+            background: rgba(255,255,255,0.3);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 28px;
+            font-weight: 700;
+            display: inline-block;
+            align-self: flex-start;
         }
         
         .example-item {
             background: rgba(255,255,255,0.15);
-            padding: 12px;
-            border-radius: 10px;
+            padding: 30px;
+            border-radius: 20px;
             backdrop-filter: blur(10px);
             border: 2px solid rgba(255,255,255,0.2);
+            transition: all 0.3s;
+        }
+        
+        .example-item:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateX(10px);
         }
         
         .example-item h4 {
-            font-size: 1.1em;
-            margin-bottom: 4px;
+            font-size: 36px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 15px;
+            font-weight: 700;
         }
         
         .example-item p {
-            font-size: 0.9em;
+            font-size: 28px;
+            line-height: 1.5;
             opacity: 0.95;
-            line-height: 1.4;
-        }
-        
-        .category-badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.3);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            margin-bottom: 10px;
-            font-weight: 600;
         }
         
         /* SLIDE 7 - Kesimpulan */
@@ -383,290 +423,268 @@
             text-align: center;
         }
         
-        .slide-7 .big-emoji {
-            font-size: 4em;
-            margin-bottom: 15px;
+        .slide-7 .hero-emoji {
+            font-size: 150px;
+            margin-bottom: 40px;
         }
         
         .slide-7 h2 {
-            font-size: 2.2em;
+            font-size: 72px;
+            margin-bottom: 50px;
+            font-weight: 900;
+        }
+        
+        .conclusion-card {
+            background: rgba(255,255,255,0.1);
+            padding: 50px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            border: 3px solid rgba(255,255,255,0.2);
+            margin-bottom: 40px;
+        }
+        
+        .conclusion-card p {
+            font-size: 38px;
+            line-height: 1.8;
             margin-bottom: 25px;
         }
         
-        .conclusion-points {
-            background: rgba(255,255,255,0.1);
-            padding: 20px;
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255,255,255,0.2);
-            margin-bottom: 20px;
-        }
-        
-        .conclusion-points p {
-            font-size: 1.05em;
-            line-height: 1.7;
-            margin-bottom: 12px;
-        }
-        
-        .cta-box {
+        .cta-card {
             background: rgba(255,255,255,0.2);
-            padding: 18px;
-            border-radius: 12px;
-            border: 2px solid rgba(255,255,255,0.3);
+            padding: 45px;
+            border-radius: 25px;
+            border: 3px solid rgba(255,255,255,0.3);
         }
         
-        .cta-box h3 {
-            font-size: 1.4em;
-            margin-bottom: 8px;
+        .cta-card h3 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            font-weight: 700;
         }
         
-        .cta-box p {
-            font-size: 1em;
+        .cta-card p {
+            font-size: 32px;
+            line-height: 1.6;
         }
         
-        /* Responsive adjustments */
-        @media (max-width: 480px) {
-            .slide {
-                padding: 35px 25px;
-            }
-            
-            .slide-1 h1 {
-                font-size: 2em;
-            }
-            
-            .slide-1 .tagline {
-                font-size: 1.2em;
-            }
-            
-            .big-emoji {
-                font-size: 4em;
-            }
-            
-            .slide-header h2 {
-                font-size: 1.9em;
-            }
-            
-            .slide-header .emoji {
-                font-size: 3em;
-            }
-        }
-        
-        @media (min-width: 481px) and (max-width: 768px) {
-            .slide {
-                padding: 45px 35px;
+        /* Responsive untuk preview di layar kecil */
+        @media (max-width: 1080px) {
+            .presentation-container {
+                transform: scale(0.5);
+                transform-origin: top center;
             }
         }
     </style>
 </head>
 <body>
     <div class="presentation-container">
-        <div class="slide-wrapper">
-            
-            <!-- SLIDE 1: COVER -->
-            <div class="slide slide-1 active">
-                <div class="big-emoji">🤖🧠🧬</div>
-                <h1>AI, Machine Learning<br>& Deep Learning</h1>
-                <div class="tagline">Apa Bedanya?</div>
-                <div class="teaser">
-                    Ketiga teknologi ini sering disebut, tapi banyak yang bingung bedanya. Yuk kita bahas dengan bahasa yang mudah dipahami! 🚀
-                </div>
+        
+        <!-- SLIDE 1: COVER -->
+        <div class="slide slide-1 active">
+            <div class="slide-number">1/7</div>
+            <div class="hero-emoji">🤖🧠</div>
+            <h1>AI, Machine Learning<br>& Deep Learning</h1>
+            <div class="tagline">Apa Bedanya?</div>
+            <div class="teaser">
+                Ketiga teknologi ini sering kamu dengar, tapi bingung bedanya? Yuk kita bahas dengan bahasa yang mudah dipahami! 🚀
             </div>
-            
-            <!-- SLIDE 2: AI -->
-            <div class="slide slide-2">
-                <div class="slide-header">
-                    <span class="emoji">🤖</span>
-                    <h2>Artificial Intelligence</h2>
-                    <div class="subtitle">Kecerdasan Buatan</div>
-                </div>
-                
-                <div class="content-section">
-                    <div class="content-box">
-                        <h3>📖 Apa itu AI?</h3>
-                        <p>
-                            Teknologi yang membuat komputer bisa <strong>berpikir dan bertindak seperti manusia</strong>.
-                        </p>
-                    </div>
-                    
-                    <div class="content-box">
-                        <h3>🎯 Kemampuan:</h3>
-                        <ul>
-                            <li>Mengenali suara & gambar</li>
-                            <li>Mengambil keputusan</li>
-                            <li>Memahami bahasa</li>
-                            <li>Memecahkan masalah</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="content-box">
-                        <div class="example-box">
-                            <strong>💡 Contoh:</strong> Siri, Google Assistant, ChatGPT
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- SLIDE 3: ML -->
-            <div class="slide slide-3">
-                <div class="slide-header">
-                    <span class="emoji">🧠</span>
-                    <h2>Machine Learning</h2>
-                    <div class="subtitle">Pembelajaran Mesin</div>
-                </div>
-                
-                <div class="content-section">
-                    <div class="content-box">
-                        <h3>📖 Apa itu ML?</h3>
-                        <p>
-                            <strong>Bagian dari AI</strong> yang membuat komputer bisa <strong>belajar dari data</strong> tanpa diprogram detail.
-                        </p>
-                    </div>
-                    
-                    <div class="content-box">
-                        <h3>⚙️ Cara Kerja:</h3>
-                        <ul>
-                            <li>Kasih data ke komputer</li>
-                            <li>Komputer temukan pola</li>
-                            <li>Semakin banyak data = lebih pintar</li>
-                            <li>Bisa prediksi data baru</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="content-box">
-                        <div class="example-box">
-                            <strong>💡 Contoh:</strong> Netflix, Spam Filter, Face ID
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- SLIDE 4: DL -->
-            <div class="slide slide-4">
-                <div class="slide-header">
-                    <span class="emoji">🧬</span>
-                    <h2>Deep Learning</h2>
-                    <div class="subtitle">Pembelajaran Mendalam</div>
-                </div>
-                
-                <div class="content-section">
-                    <div class="content-box">
-                        <h3>📖 Apa itu DL?</h3>
-                        <p>
-                            <strong>Bagian dari ML</strong> yang pakai <strong>neural network</strong> untuk handle data kompleks.
-                        </p>
-                    </div>
-                    
-                    <div class="content-box">
-                        <h3>🔬 Karakteristik:</h3>
-                        <ul>
-                            <li>Terinspirasi dari otak manusia</li>
-                            <li>Butuh data SANGAT banyak</li>
-                            <li>Butuh komputer powerful</li>
-                            <li>Akurasi sangat tinggi</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="content-box">
-                        <div class="example-box">
-                            <strong>💡 Contoh:</strong> Self-driving car, AI Art Generator
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- SLIDE 5: HUBUNGAN -->
-            <div class="slide slide-5">
-                <div class="slide-header">
-                    <span class="emoji">⚖️</span>
-                    <h2>Hubungan Ketiganya</h2>
-                </div>
-                
-                <div class="relationship-section">
-                    <div class="relationship-container">
-                        <div class="level-box level-1">
-                            🤖 ARTIFICIAL INTELLIGENCE
-                        </div>
-                        <div class="level-box level-2">
-                            🧠 MACHINE LEARNING
-                        </div>
-                        <div class="level-box level-3">
-                            🧬 DEEP LEARNING
-                        </div>
-                    </div>
-                    
-                    <div class="explanation-text">
-                        <h3>💡 Penjelasan:</h3>
-                        <p>
-                            <strong>AI</strong> adalah konsep terluas → <strong>ML</strong> adalah bagian dari AI → <strong>Deep Learning</strong> adalah bagian dari ML yang paling canggih!
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- SLIDE 6: CONTOH PENGGUNAAN -->
-            <div class="slide slide-6">
-                <div class="slide-header">
-                    <span class="emoji">💡</span>
-                    <h2>Contoh Real-World</h2>
-                </div>
-                
-                <div class="examples-section">
-                    <div class="examples-list">
-                        <div class="category-badge">🤖 AI</div>
-                        <div class="example-item">
-                            <h4>🗣️ Virtual Assistant</h4>
-                            <p>Siri, Alexa - Kontrol smart home</p>
-                        </div>
-                        
-                        <div class="category-badge">🧠 ML</div>
-                        <div class="example-item">
-                            <h4>📺 Rekomendasi</h4>
-                            <p>Netflix - Belajar dari history kamu</p>
-                        </div>
-                        <div class="example-item">
-                            <h4>📧 Spam Filter</h4>
-                            <p>Gmail - Filter email spam otomatis</p>
-                        </div>
-                        
-                        <div class="category-badge">🧬 DL</div>
-                        <div class="example-item">
-                            <h4>🚗 Self-Driving Car</h4>
-                            <p>Tesla - Belajar dari jutaan gambar</p>
-                        </div>
-                        <div class="example-item">
-                            <h4>🎨 AI Art Generator</h4>
-                            <p>Midjourney - Bikin gambar dari text</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- SLIDE 7: KESIMPULAN -->
-            <div class="slide slide-7">
-                <div class="big-emoji">🎯</div>
-                <h2>Kesimpulan</h2>
-                
-                <div class="conclusion-points">
-                    <p><strong>AI</strong> = Komputer pintar seperti manusia</p>
-                    <p><strong>ML</strong> = Bagian AI yang belajar dari data</p>
-                    <p><strong>Deep Learning</strong> = Bagian ML yang paling canggih!</p>
-                </div>
-                
-                <div class="cta-box">
-                    <h3>🚀 Teknologi Masa Depan!</h3>
-                    <p>Ketiganya akan semakin terintegrasi dalam kehidupan kita</p>
-                </div>
-            </div>
-            
         </div>
         
-        <!-- Navigation -->
+        <!-- SLIDE 2: AI -->
+        <div class="slide slide-2">
+            <div class="slide-number">2/7</div>
+            <div class="slide-header">
+                <span class="emoji">🤖</span>
+                <h2>Artificial Intelligence</h2>
+                <div class="subtitle">Kecerdasan Buatan</div>
+            </div>
+            
+            <div class="content-section">
+                <div class="content-box">
+                    <h3>📖 Apa itu AI?</h3>
+                    <p>
+                        Teknologi yang membuat komputer atau mesin bisa <strong>berpikir dan bertindak seperti manusia</strong>. AI mencakup semua sistem yang bisa melakukan tugas-tugas yang butuh kecerdasan manusia.
+                    </p>
+                </div>
+                
+                <div class="content-box">
+                    <h3>🎯 Kemampuan AI:</h3>
+                    <ul>
+                        <li>Mengenali suara dan gambar</li>
+                        <li>Mengambil keputusan otomatis</li>
+                        <li>Memahami bahasa manusia</li>
+                        <li>Memecahkan masalah kompleks</li>
+                    </ul>
+                    <div class="example-box">
+                        <strong>💡 Contoh:</strong> Siri, Google Assistant, Alexa, ChatGPT
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SLIDE 3: ML -->
+        <div class="slide slide-3">
+            <div class="slide-number">3/7</div>
+            <div class="slide-header">
+                <span class="emoji">🧠</span>
+                <h2>Machine Learning</h2>
+                <div class="subtitle">Pembelajaran Mesin</div>
+            </div>
+            
+            <div class="content-section">
+                <div class="content-box">
+                    <h3>📖 Apa itu ML?</h3>
+                    <p>
+                        <strong>Cabang dari AI</strong> yang membuat komputer bisa <strong>belajar dari data</strong> tanpa perlu diprogram secara detail untuk setiap situasi.
+                    </p>
+                </div>
+                
+                <div class="content-box">
+                    <h3>⚙️ Cara Kerja ML:</h3>
+                    <ul>
+                        <li>Kasih data ke komputer (training)</li>
+                        <li>Komputer temukan pola sendiri</li>
+                        <li>Semakin banyak data = lebih pintar</li>
+                        <li>Bisa prediksi/klasifikasi data baru</li>
+                    </ul>
+                    <div class="example-box">
+                        <strong>💡 Contoh:</strong> Rekomendasi Netflix, Spam Filter Email, Face ID
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SLIDE 4: DL -->
+        <div class="slide slide-4">
+            <div class="slide-number">4/7</div>
+            <div class="slide-header">
+                <span class="emoji">🧬</span>
+                <h2>Deep Learning</h2>
+                <div class="subtitle">Pembelajaran Mendalam</div>
+            </div>
+            
+            <div class="content-section">
+                <div class="content-box">
+                    <h3>📖 Apa itu DL?</h3>
+                    <p>
+                        <strong>Bagian dari Machine Learning</strong> yang menggunakan <strong>neural network</strong> dengan banyak layer untuk memproses data yang sangat kompleks.
+                    </p>
+                </div>
+                
+                <div class="content-box">
+                    <h3>🔬 Karakteristik DL:</h3>
+                    <ul>
+                        <li>Terinspirasi dari otak manusia</li>
+                        <li>Butuh data SANGAT banyak</li>
+                        <li>Butuh komputer powerful (GPU)</li>
+                        <li>Akurasi sangat tinggi</li>
+                    </ul>
+                    <div class="example-box">
+                        <strong>💡 Contoh:</strong> Self-driving Car, ChatGPT, AI Art Generator (Midjourney)
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SLIDE 5: HUBUNGAN -->
+        <div class="slide slide-5">
+            <div class="slide-number">5/7</div>
+            <div class="slide-header">
+                <span class="emoji">⚖️</span>
+                <h2>Hubungan Ketiganya</h2>
+            </div>
+            
+            <div class="relationship-section">
+                <div class="relationship-visual">
+                    <div class="level-box level-1">
+                        🤖 ARTIFICIAL INTELLIGENCE
+                    </div>
+                    <div class="level-box level-2">
+                        🧠 MACHINE LEARNING
+                    </div>
+                    <div class="level-box level-3">
+                        🧬 DEEP LEARNING
+                    </div>
+                </div>
+                
+                <div class="explanation-card">
+                    <h3>💡 Penjelasan Sederhana:</h3>
+                    <p>
+                        <strong>AI</strong> adalah konsep paling luas (membuat komputer pintar) → <strong>ML</strong> adalah bagian dari AI yang fokus belajar dari data → <strong>Deep Learning</strong> adalah bagian dari ML yang paling canggih dan kompleks!
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SLIDE 6: CONTOH -->
+        <div class="slide slide-6">
+            <div class="slide-number">6/7</div>
+            <div class="slide-header">
+                <span class="emoji">💡</span>
+                <h2>Contoh dalam Kehidupan</h2>
+            </div>
+            
+            <div class="examples-section">
+                <div class="category-section">
+                    <div class="category-badge">🤖 ARTIFICIAL INTELLIGENCE</div>
+                    <div class="example-item">
+                        <h4>🗣️ Virtual Assistant</h4>
+                        <p>Siri, Alexa - Menjawab pertanyaan & kontrol smart home</p>
+                    </div>
+                </div>
+                
+                <div class="category-section">
+                    <div class="category-badge">🧠 MACHINE LEARNING</div>
+                    <div class="example-item">
+                        <h4>📺 Sistem Rekomendasi</h4>
+                        <p>Netflix, Spotify - Belajar dari history tontonan kamu</p>
+                    </div>
+                    <div class="example-item">
+                        <h4>📧 Spam Filter</h4>
+                        <p>Gmail - Deteksi & filter email spam otomatis</p>
+                    </div>
+                </div>
+                
+                <div class="category-section">
+                    <div class="category-badge">🧬 DEEP LEARNING</div>
+                    <div class="example-item">
+                        <h4>🚗 Self-Driving Car</h4>
+                        <p>Tesla Autopilot - Belajar dari jutaan gambar jalan</p>
+                    </div>
+                    <div class="example-item">
+                        <h4>🎨 AI Art Generator</h4>
+                        <p>Midjourney, DALL-E - Generate gambar dari text prompt</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SLIDE 7: KESIMPULAN -->
+        <div class="slide slide-7">
+            <div class="slide-number">7/7</div>
+            <div class="hero-emoji">🎯</div>
+            <h2>Kesimpulan</h2>
+            
+            <div class="conclusion-card">
+                <p><strong>AI</strong> = Teknologi yang bikin komputer pintar seperti manusia</p>
+                <p><strong>Machine Learning</strong> = Bagian dari AI yang belajar dari data</p>
+                <p><strong>Deep Learning</strong> = Bagian dari ML yang paling canggih!</p>
+            </div>
+            
+            <div class="cta-card">
+                <h3>🚀 Teknologi Masa Depan!</h3>
+                <p>Ketiganya akan semakin terintegrasi dalam kehidupan sehari-hari dan mengubah cara kita bekerja & berinteraksi</p>
+            </div>
+        </div>
+        
+    </div>
+    
+    <!-- Navigation Overlay -->
+    <div class="nav-overlay">
         <div class="nav-container">
             <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">← Prev</button>
             <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Next →</button>
         </div>
-        
-        <!-- Slide Indicator -->
         <div class="slide-indicator">
             <span class="dot active" onclick="goToSlide(0)"></span>
             <span class="dot" onclick="goToSlide(1)"></span>
@@ -709,6 +727,7 @@
             showSlide(currentSlide);
         }
         
+        // Keyboard navigation
         document.addEventListener('keydown', function(e) {
             if (e.key === 'ArrowLeft') changeSlide(-1);
             if (e.key === 'ArrowRight') changeSlide(1);
@@ -716,8 +735,9 @@
         
         showSlide(currentSlide);
         
-        console.log('✅ Presentation siap!');
-        console.log('📱 Screenshot langsung dari HP portrait mode - konten pas di satu layar!');
+        console.log('✅ Presentation ready! Ukuran: 1080x1920px');
+        console.log('📱 Perfect untuk Instagram/TikTok Story!');
+        console.log('🎯 Screenshot setiap slide untuk konten sosmed!');
     </script>
 </body>
 </html>
