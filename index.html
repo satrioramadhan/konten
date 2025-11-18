@@ -18,18 +18,18 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 20px;
+            padding: 15px;
         }
         
         .presentation-container {
-            max-width: 600px;
             width: 100%;
+            max-width: 500px;
         }
         
         .slide-wrapper {
             background: white;
             width: 100%;
-            aspect-ratio: 3/4;
+            min-height: 90vh;
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.5);
             overflow: hidden;
@@ -40,10 +40,10 @@
             width: 100%;
             height: 100%;
             display: none;
-            padding: 50px 40px;
+            padding: 40px 30px;
             flex-direction: column;
+            justify-content: space-between;
             position: relative;
-            overflow-y: auto;
         }
         
         .slide.active {
@@ -55,14 +55,14 @@
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-top: 25px;
+            margin-top: 20px;
         }
         
         .nav-btn {
             background: rgba(255,255,255,0.2);
             color: white;
             border: 2px solid rgba(255,255,255,0.3);
-            padding: 12px 25px;
+            padding: 12px 30px;
             border-radius: 50px;
             cursor: pointer;
             font-weight: bold;
@@ -84,13 +84,14 @@
         .slide-indicator {
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             margin-top: 15px;
+            flex-wrap: wrap;
         }
         
         .dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background: rgba(255,255,255,0.3);
             cursor: pointer;
@@ -99,8 +100,8 @@
         
         .dot.active {
             background: white;
-            width: 30px;
-            border-radius: 6px;
+            width: 25px;
+            border-radius: 5px;
         }
         
         /* SLIDE 1 - Cover */
@@ -113,7 +114,7 @@
         }
         
         .big-emoji {
-            font-size: 6em;
+            font-size: 5em;
             margin-bottom: 20px;
             animation: bounce 2s ease-in-out infinite;
         }
@@ -124,17 +125,17 @@
         }
         
         .slide-1 h1 {
-            font-size: 2.8em;
+            font-size: 2.5em;
             margin-bottom: 15px;
             line-height: 1.2;
             text-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
         
         .slide-1 .tagline {
-            font-size: 1.5em;
+            font-size: 1.4em;
             opacity: 0.95;
             font-weight: 500;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
         
         .slide-1 .teaser {
@@ -143,59 +144,73 @@
             border-radius: 15px;
             backdrop-filter: blur(10px);
             border: 2px solid rgba(255,255,255,0.3);
-            font-size: 1.2em;
+            font-size: 1.1em;
             line-height: 1.6;
         }
         
-        /* SLIDE 2 - AI */
+        /* SLIDE 2, 3, 4 - Definisi AI, ML, DL */
+        .slide-2, .slide-3, .slide-4 {
+            color: white;
+        }
+        
         .slide-2 {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+        }
+        
+        .slide-3 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .slide-4 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
         }
         
         .slide-header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
         
         .slide-header .emoji {
-            font-size: 4em;
+            font-size: 3.5em;
             display: block;
             margin-bottom: 10px;
         }
         
         .slide-header h2 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            font-size: 2.2em;
+            margin-bottom: 5px;
         }
         
         .slide-header .subtitle {
-            font-size: 1.3em;
+            font-size: 1.2em;
             opacity: 0.9;
             font-style: italic;
         }
         
+        .content-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 15px;
+        }
+        
         .content-box {
             background: rgba(255,255,255,0.15);
-            padding: 25px;
-            border-radius: 15px;
+            padding: 18px;
+            border-radius: 12px;
             backdrop-filter: blur(10px);
             border: 2px solid rgba(255,255,255,0.3);
-            margin-bottom: 20px;
         }
         
         .content-box h3 {
-            font-size: 1.5em;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-size: 1.3em;
+            margin-bottom: 10px;
         }
         
         .content-box p {
-            font-size: 1.1em;
-            line-height: 1.7;
-            margin-bottom: 15px;
+            font-size: 1em;
+            line-height: 1.6;
         }
         
         .content-box ul {
@@ -204,47 +219,33 @@
         }
         
         .content-box li {
-            font-size: 1.05em;
-            padding: 8px 0;
+            font-size: 0.95em;
+            padding: 5px 0;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
         
         .content-box li:before {
             content: "✓";
             font-weight: bold;
             background: rgba(255,255,255,0.3);
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            font-size: 0.9em;
         }
         
         .example-box {
             background: rgba(255,255,255,0.25);
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 12px;
-        }
-        
-        .example-box strong {
-            font-size: 1.1em;
-        }
-        
-        /* SLIDE 3 - ML */
-        .slide-3 {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-        }
-        
-        /* SLIDE 4 - DL */
-        .slide-4 {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 8px;
+            font-size: 0.95em;
         }
         
         /* SLIDE 5 - Hubungan */
@@ -256,18 +257,25 @@
             color: #2c3e50;
         }
         
+        .relationship-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
         .relationship-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px;
-            margin-top: 30px;
+            gap: 12px;
+            margin-bottom: 20px;
         }
         
         .level-box {
             width: 100%;
-            padding: 20px;
-            border-radius: 15px;
+            padding: 15px;
+            border-radius: 12px;
             text-align: center;
             color: white;
             font-weight: bold;
@@ -281,39 +289,38 @@
         
         .level-1 {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            font-size: 1.8em;
-            padding: 25px;
+            font-size: 1.5em;
+            padding: 18px;
         }
         
         .level-2 {
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            font-size: 1.5em;
+            font-size: 1.3em;
             width: 85%;
         }
         
         .level-3 {
             background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            font-size: 1.3em;
+            font-size: 1.1em;
             width: 70%;
         }
         
         .explanation-text {
-            margin-top: 25px;
-            padding: 20px;
+            padding: 18px;
             background: #f8f9fa;
-            border-radius: 15px;
+            border-radius: 12px;
             border-left: 5px solid #667eea;
         }
         
         .explanation-text h3 {
             color: #2c3e50;
-            font-size: 1.4em;
-            margin-bottom: 10px;
+            font-size: 1.2em;
+            margin-bottom: 8px;
         }
         
         .explanation-text p {
             color: #34495e;
-            font-size: 1.1em;
+            font-size: 1em;
             line-height: 1.6;
         }
         
@@ -323,38 +330,39 @@
             color: white;
         }
         
+        .examples-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
         .examples-list {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
         
         .example-item {
             background: rgba(255,255,255,0.15);
-            padding: 15px;
-            border-radius: 12px;
+            padding: 12px;
+            border-radius: 10px;
             backdrop-filter: blur(10px);
             border: 2px solid rgba(255,255,255,0.2);
-            transition: all 0.3s;
-        }
-        
-        .example-item:hover {
-            background: rgba(255,255,255,0.25);
-            transform: translateX(5px);
         }
         
         .example-item h4 {
-            font-size: 1.3em;
-            margin-bottom: 5px;
+            font-size: 1.1em;
+            margin-bottom: 4px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
         
         .example-item p {
-            font-size: 1em;
+            font-size: 0.9em;
             opacity: 0.95;
-            line-height: 1.5;
+            line-height: 1.4;
         }
         
         .category-badge {
@@ -363,7 +371,8 @@
             padding: 5px 12px;
             border-radius: 20px;
             font-size: 0.85em;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            font-weight: 600;
         }
         
         /* SLIDE 7 - Kesimpulan */
@@ -375,67 +384,76 @@
         }
         
         .slide-7 .big-emoji {
-            font-size: 5em;
+            font-size: 4em;
+            margin-bottom: 15px;
         }
         
         .slide-7 h2 {
-            font-size: 2.5em;
-            margin-bottom: 30px;
+            font-size: 2.2em;
+            margin-bottom: 25px;
         }
         
         .conclusion-points {
             background: rgba(255,255,255,0.1);
-            padding: 25px;
-            border-radius: 15px;
+            padding: 20px;
+            border-radius: 12px;
             backdrop-filter: blur(10px);
             border: 2px solid rgba(255,255,255,0.2);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         
         .conclusion-points p {
-            font-size: 1.2em;
-            line-height: 1.8;
-            margin-bottom: 15px;
+            font-size: 1.05em;
+            line-height: 1.7;
+            margin-bottom: 12px;
         }
         
         .cta-box {
             background: rgba(255,255,255,0.2);
-            padding: 20px;
-            border-radius: 15px;
+            padding: 18px;
+            border-radius: 12px;
             border: 2px solid rgba(255,255,255,0.3);
         }
         
         .cta-box h3 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
+            font-size: 1.4em;
+            margin-bottom: 8px;
         }
         
-        /* Scrollbar styling */
-        .slide::-webkit-scrollbar {
-            width: 8px;
+        .cta-box p {
+            font-size: 1em;
         }
         
-        .slide::-webkit-scrollbar-track {
-            background: rgba(0,0,0,0.1);
-            border-radius: 10px;
-        }
-        
-        .slide::-webkit-scrollbar-thumb {
-            background: rgba(0,0,0,0.3);
-            border-radius: 10px;
-        }
-        
-        @media (max-width: 768px) {
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
             .slide {
-                padding: 40px 30px;
+                padding: 35px 25px;
             }
             
             .slide-1 h1 {
-                font-size: 2.2em;
+                font-size: 2em;
+            }
+            
+            .slide-1 .tagline {
+                font-size: 1.2em;
+            }
+            
+            .big-emoji {
+                font-size: 4em;
             }
             
             .slide-header h2 {
-                font-size: 2em;
+                font-size: 1.9em;
+            }
+            
+            .slide-header .emoji {
+                font-size: 3em;
+            }
+        }
+        
+        @media (min-width: 481px) and (max-width: 768px) {
+            .slide {
+                padding: 45px 35px;
             }
         }
     </style>
@@ -450,7 +468,7 @@
                 <h1>AI, Machine Learning<br>& Deep Learning</h1>
                 <div class="tagline">Apa Bedanya?</div>
                 <div class="teaser">
-                    Ketiga teknologi ini sering disebut, tapi banyak yang bingung bedanya. Yuk kita bahas satu per satu dengan bahasa yang mudah dipahami! 🚀
+                    Ketiga teknologi ini sering disebut, tapi banyak yang bingung bedanya. Yuk kita bahas dengan bahasa yang mudah dipahami! 🚀
                 </div>
             </div>
             
@@ -462,27 +480,28 @@
                     <div class="subtitle">Kecerdasan Buatan</div>
                 </div>
                 
-                <div class="content-box">
-                    <h3>📖 Apa itu AI?</h3>
-                    <p>
-                        AI adalah teknologi yang membuat komputer atau mesin bisa <strong>berpikir dan bertindak seperti manusia</strong>.
-                    </p>
-                </div>
-                
-                <div class="content-box">
-                    <h3>🎯 Kemampuan AI:</h3>
-                    <ul>
-                        <li>Mengenali suara dan gambar</li>
-                        <li>Mengambil keputusan</li>
-                        <li>Memahami bahasa manusia</li>
-                        <li>Memecahkan masalah</li>
-                    </ul>
-                </div>
-                
-                <div class="content-box">
-                    <div class="example-box">
-                        <strong>💡 Contoh:</strong><br>
-                        Siri, Google Assistant, Alexa, ChatGPT
+                <div class="content-section">
+                    <div class="content-box">
+                        <h3>📖 Apa itu AI?</h3>
+                        <p>
+                            Teknologi yang membuat komputer bisa <strong>berpikir dan bertindak seperti manusia</strong>.
+                        </p>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h3>🎯 Kemampuan:</h3>
+                        <ul>
+                            <li>Mengenali suara & gambar</li>
+                            <li>Mengambil keputusan</li>
+                            <li>Memahami bahasa</li>
+                            <li>Memecahkan masalah</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <div class="example-box">
+                            <strong>💡 Contoh:</strong> Siri, Google Assistant, ChatGPT
+                        </div>
                     </div>
                 </div>
             </div>
@@ -495,27 +514,28 @@
                     <div class="subtitle">Pembelajaran Mesin</div>
                 </div>
                 
-                <div class="content-box">
-                    <h3>📖 Apa itu ML?</h3>
-                    <p>
-                        ML adalah <strong>cabang dari AI</strong> yang membuat komputer bisa <strong>belajar dari data</strong> tanpa diprogram secara detail.
-                    </p>
-                </div>
-                
-                <div class="content-box">
-                    <h3>⚙️ Cara Kerja:</h3>
-                    <ul>
-                        <li>Kasih data ke komputer</li>
-                        <li>Komputer belajar menemukan pola</li>
-                        <li>Semakin banyak data, semakin pintar</li>
-                        <li>Bisa prediksi data baru</li>
-                    </ul>
-                </div>
-                
-                <div class="content-box">
-                    <div class="example-box">
-                        <strong>💡 Contoh:</strong><br>
-                        Rekomendasi Netflix/Spotify, Spam Filter, Face ID
+                <div class="content-section">
+                    <div class="content-box">
+                        <h3>📖 Apa itu ML?</h3>
+                        <p>
+                            <strong>Bagian dari AI</strong> yang membuat komputer bisa <strong>belajar dari data</strong> tanpa diprogram detail.
+                        </p>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h3>⚙️ Cara Kerja:</h3>
+                        <ul>
+                            <li>Kasih data ke komputer</li>
+                            <li>Komputer temukan pola</li>
+                            <li>Semakin banyak data = lebih pintar</li>
+                            <li>Bisa prediksi data baru</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <div class="example-box">
+                            <strong>💡 Contoh:</strong> Netflix, Spam Filter, Face ID
+                        </div>
                     </div>
                 </div>
             </div>
@@ -528,27 +548,28 @@
                     <div class="subtitle">Pembelajaran Mendalam</div>
                 </div>
                 
-                <div class="content-box">
-                    <h3>📖 Apa itu DL?</h3>
-                    <p>
-                        Deep Learning adalah <strong>bagian dari ML</strong> yang menggunakan <strong>neural network</strong> dengan banyak layer untuk handle data kompleks.
-                    </p>
-                </div>
-                
-                <div class="content-box">
-                    <h3>🔬 Karakteristik:</h3>
-                    <ul>
-                        <li>Terinspirasi dari otak manusia</li>
-                        <li>Butuh data SANGAT banyak</li>
-                        <li>Butuh komputer powerful (GPU)</li>
-                        <li>Akurasi sangat tinggi</li>
-                    </ul>
-                </div>
-                
-                <div class="content-box">
-                    <div class="example-box">
-                        <strong>💡 Contoh:</strong><br>
-                        Self-driving car, ChatGPT, AI Art Generator
+                <div class="content-section">
+                    <div class="content-box">
+                        <h3>📖 Apa itu DL?</h3>
+                        <p>
+                            <strong>Bagian dari ML</strong> yang pakai <strong>neural network</strong> untuk handle data kompleks.
+                        </p>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h3>🔬 Karakteristik:</h3>
+                        <ul>
+                            <li>Terinspirasi dari otak manusia</li>
+                            <li>Butuh data SANGAT banyak</li>
+                            <li>Butuh komputer powerful</li>
+                            <li>Akurasi sangat tinggi</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <div class="example-box">
+                            <strong>💡 Contoh:</strong> Self-driving car, AI Art Generator
+                        </div>
                     </div>
                 </div>
             </div>
@@ -560,23 +581,25 @@
                     <h2>Hubungan Ketiganya</h2>
                 </div>
                 
-                <div class="relationship-container">
-                    <div class="level-box level-1">
-                        🤖 ARTIFICIAL INTELLIGENCE
+                <div class="relationship-section">
+                    <div class="relationship-container">
+                        <div class="level-box level-1">
+                            🤖 ARTIFICIAL INTELLIGENCE
+                        </div>
+                        <div class="level-box level-2">
+                            🧠 MACHINE LEARNING
+                        </div>
+                        <div class="level-box level-3">
+                            🧬 DEEP LEARNING
+                        </div>
                     </div>
-                    <div class="level-box level-2">
-                        🧠 MACHINE LEARNING
+                    
+                    <div class="explanation-text">
+                        <h3>💡 Penjelasan:</h3>
+                        <p>
+                            <strong>AI</strong> adalah konsep terluas → <strong>ML</strong> adalah bagian dari AI → <strong>Deep Learning</strong> adalah bagian dari ML yang paling canggih!
+                        </p>
                     </div>
-                    <div class="level-box level-3">
-                        🧬 DEEP LEARNING
-                    </div>
-                </div>
-                
-                <div class="explanation-text">
-                    <h3>💡 Penjelasan:</h3>
-                    <p>
-                        <strong>AI</strong> adalah konsep terluas → <strong>ML</strong> adalah bagian dari AI yang fokus belajar dari data → <strong>Deep Learning</strong> adalah bagian dari ML yang paling canggih dan kompleks!
-                    </p>
                 </div>
             </div>
             
@@ -587,31 +610,33 @@
                     <h2>Contoh Real-World</h2>
                 </div>
                 
-                <div class="examples-list">
-                    <div class="category-badge">🤖 ARTIFICIAL INTELLIGENCE</div>
-                    <div class="example-item">
-                        <h4>🗣️ Virtual Assistant</h4>
-                        <p>Siri, Alexa - Jawab pertanyaan & kontrol smart home</p>
-                    </div>
-                    
-                    <div class="category-badge">🧠 MACHINE LEARNING</div>
-                    <div class="example-item">
-                        <h4>📺 Rekomendasi</h4>
-                        <p>Netflix, Spotify - Belajar dari history kamu</p>
-                    </div>
-                    <div class="example-item">
-                        <h4>📧 Spam Filter</h4>
-                        <p>Gmail otomatis filter email spam</p>
-                    </div>
-                    
-                    <div class="category-badge">🧬 DEEP LEARNING</div>
-                    <div class="example-item">
-                        <h4>🚗 Self-Driving Car</h4>
-                        <p>Tesla - Belajar dari jutaan gambar jalan</p>
-                    </div>
-                    <div class="example-item">
-                        <h4>🎨 AI Art Generator</h4>
-                        <p>Midjourney, DALL-E - Bikin gambar dari text</p>
+                <div class="examples-section">
+                    <div class="examples-list">
+                        <div class="category-badge">🤖 AI</div>
+                        <div class="example-item">
+                            <h4>🗣️ Virtual Assistant</h4>
+                            <p>Siri, Alexa - Kontrol smart home</p>
+                        </div>
+                        
+                        <div class="category-badge">🧠 ML</div>
+                        <div class="example-item">
+                            <h4>📺 Rekomendasi</h4>
+                            <p>Netflix - Belajar dari history kamu</p>
+                        </div>
+                        <div class="example-item">
+                            <h4>📧 Spam Filter</h4>
+                            <p>Gmail - Filter email spam otomatis</p>
+                        </div>
+                        
+                        <div class="category-badge">🧬 DL</div>
+                        <div class="example-item">
+                            <h4>🚗 Self-Driving Car</h4>
+                            <p>Tesla - Belajar dari jutaan gambar</p>
+                        </div>
+                        <div class="example-item">
+                            <h4>🎨 AI Art Generator</h4>
+                            <p>Midjourney - Bikin gambar dari text</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -622,14 +647,14 @@
                 <h2>Kesimpulan</h2>
                 
                 <div class="conclusion-points">
-                    <p><strong>AI</strong> = Teknologi yang bikin komputer pintar seperti manusia</p>
+                    <p><strong>AI</strong> = Komputer pintar seperti manusia</p>
                     <p><strong>ML</strong> = Bagian AI yang belajar dari data</p>
                     <p><strong>Deep Learning</strong> = Bagian ML yang paling canggih!</p>
                 </div>
                 
                 <div class="cta-box">
                     <h3>🚀 Teknologi Masa Depan!</h3>
-                    <p>Ketiganya akan semakin terintegrasi dalam kehidupan sehari-hari</p>
+                    <p>Ketiganya akan semakin terintegrasi dalam kehidupan kita</p>
                 </div>
             </div>
             
@@ -661,24 +686,17 @@
         const nextBtn = document.getElementById('nextBtn');
         
         function showSlide(n) {
-            // Remove active class from all slides and dots
             slides.forEach(slide => slide.classList.remove('active'));
             dots.forEach(dot => dot.classList.remove('active'));
             
-            // Wrap around
             if (n >= slides.length) currentSlide = 0;
             if (n < 0) currentSlide = slides.length - 1;
             
-            // Add active class to current slide and dot
             slides[currentSlide].classList.add('active');
             dots[currentSlide].classList.add('active');
             
-            // Update button states
             prevBtn.disabled = currentSlide === 0;
             nextBtn.disabled = currentSlide === slides.length - 1;
-            
-            // Reset scroll position
-            slides[currentSlide].scrollTop = 0;
         }
         
         function changeSlide(n) {
@@ -691,18 +709,15 @@
             showSlide(currentSlide);
         }
         
-        // Keyboard navigation
         document.addEventListener('keydown', function(e) {
             if (e.key === 'ArrowLeft') changeSlide(-1);
             if (e.key === 'ArrowRight') changeSlide(1);
         });
         
-        // Initialize
         showSlide(currentSlide);
         
-        console.log('✅ Presentation mode aktif!');
-        console.log('📱 Gunakan tombol Prev/Next atau keyboard arrow keys');
-        console.log('🎯 Klik dots untuk jump ke slide tertentu');
+        console.log('✅ Presentation siap!');
+        console.log('📱 Screenshot langsung dari HP portrait mode - konten pas di satu layar!');
     </script>
 </body>
 </html>
